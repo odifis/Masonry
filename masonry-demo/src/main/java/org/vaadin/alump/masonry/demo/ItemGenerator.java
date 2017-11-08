@@ -3,7 +3,6 @@ package org.vaadin.alump.masonry.demo;
 import com.vaadin.server.ClassResource;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.ThemeResource;
-import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.*;
 import org.vaadin.alump.masonry.UnDraggableImage;
 
@@ -77,7 +76,7 @@ public class ItemGenerator {
             VerticalLayout vl = new VerticalLayout();
             vl.setWidth("100%");
             vl.setSpacing(true);
-            final TextField field = new TextField("Your name:");
+            final com.vaadin.v7.ui.TextField field = new com.vaadin.v7.ui.TextField("Your name:");
             field.setWidth("100%");
             field.setImmediate(true);
             vl.addComponent(field);
@@ -128,7 +127,7 @@ public class ItemGenerator {
         layout.addStyleName("post-it");
 
         Label label = new Label(message);
-        label.setContentMode(ContentMode.HTML);
+        label.setContentMode(com.vaadin.shared.ui.ContentMode.HTML);
         layout.addComponent(label);
 
         return layout;

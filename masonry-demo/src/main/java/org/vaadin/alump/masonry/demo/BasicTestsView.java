@@ -1,13 +1,13 @@
 package org.vaadin.alump.masonry.demo;
 
-import com.vaadin.data.Item;
-import com.vaadin.data.Property;
 import com.vaadin.event.LayoutEvents;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Page;
 import com.vaadin.ui.*;
+import com.vaadin.v7.data.Property;
+
 import org.vaadin.alump.masonry.ImagesLoadedExtension;
 import org.vaadin.alump.masonry.MasonryLayout;
 
@@ -94,17 +94,15 @@ public class BasicTestsView extends AbstractTestView implements ImagesLoadedExte
 
         addButton(FontAwesome.CLOCK_O, "Adds slow images to layout to test re-layouting", event -> createSlowImage(index++));
 
-        CheckBox clickListener = new CheckBox("Close when clicked");
+        com.vaadin.v7.ui.CheckBox clickListener = new com.vaadin.v7.ui.CheckBox("Close when clicked");
         clickListener.setDescription("When true will close items when clicked.");
-        clickListener.setImmediate(true);
         clickListener.addValueChangeListener(clickListenerCBListener);
         buttonLayout.addComponent(clickListener);
         buttonLayout.setComponentAlignment(clickListener, Alignment.BOTTOM_CENTER);
 
-        CheckBox paperStyle = new CheckBox("Paper");
+        com.vaadin.v7.ui.CheckBox paperStyle = new com.vaadin.v7.ui.CheckBox("Paper");
         paperStyle.setDescription("Use fancier paper styling");
         paperStyle.setValue(true);
-        paperStyle.setImmediate(true);
         paperStyle.addValueChangeListener(event -> {
             boolean value = (Boolean) event.getProperty().getValue();
             if (value) {
@@ -137,8 +135,8 @@ public class BasicTestsView extends AbstractTestView implements ImagesLoadedExte
         return layout;
     }
 
-    private ComboBox createTransitionTimeComboBox() {
-        ComboBox transitionTime = new ComboBox();
+    private com.vaadin.v7.ui.ComboBox createTransitionTimeComboBox() {
+        com.vaadin.v7.ui.ComboBox transitionTime = new com.vaadin.v7.ui.ComboBox();
         transitionTime.setWidth("120px");
         transitionTime.setImmediate(true);
         transitionTime.addItem("0.2s");

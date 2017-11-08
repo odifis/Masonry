@@ -4,7 +4,6 @@ import com.vaadin.ui.AbstractTextField;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.themes.Reindeer;
 
 /**
  * Created by alump on 05/11/14.
@@ -19,7 +18,7 @@ public class NotFoundView extends AbstractTestView {
         layout.setSpacing(true);
 
         Label label = new Label("Something wrong with your URL :(");
-        label.addStyleName(Reindeer.LABEL_H1);
+        label.addStyleName(com.vaadin.v7.ui.themes.Reindeer.LABEL_H1);
         layout.addComponent(label);
 
         Button menuButton = new Button("Return to main menu", new Button.ClickListener() {
@@ -29,7 +28,7 @@ public class NotFoundView extends AbstractTestView {
                 getNavigator().navigateTo(MainMenuView.VIEW_NAME);
             }
         });
-        menuButton.addStyleName(Reindeer.BUTTON_LINK);
+        menuButton.addStyleName(com.vaadin.v7.ui.themes.Reindeer.BUTTON_LINK);
         layout.addComponent(menuButton);
 
         setPanelContent(layout);

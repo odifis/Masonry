@@ -1,6 +1,5 @@
 package org.vaadin.alump.masonry.demo;
 
-import com.vaadin.data.Property;
 import com.vaadin.ui.*;
 import org.vaadin.alump.masonry.MasonryDnDWrapper;
 import org.vaadin.alump.masonry.MasonryLayout;
@@ -51,7 +50,7 @@ public class VaadinDnDTestsView extends AbstractTestView {
             }
         });
 
-        CheckBox disallowReorder = new CheckBox("Disallow reorder");
+        com.vaadin.v7.ui.CheckBox disallowReorder = new com.vaadin.v7.ui.CheckBox("Disallow reorder");
         disallowReorder.setImmediate(true);
         disallowReorder.addValueChangeListener(event -> {
             layout.setReorderable(!((Boolean) event.getProperty().getValue()));

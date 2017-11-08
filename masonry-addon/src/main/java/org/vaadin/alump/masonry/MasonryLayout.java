@@ -23,6 +23,7 @@ import com.vaadin.event.LayoutEvents;
 import com.vaadin.shared.Connector;
 import com.vaadin.shared.EventId;
 import com.vaadin.shared.MouseEventDetails;
+import com.vaadin.shared.Registration;
 import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Component;
 import org.vaadin.alump.masonry.client.shared.MasonryLayoutClientRpc;
@@ -41,7 +42,9 @@ import java.util.List;
 @JavaScript({ "masonry.pkgd.min.js" })
 public class MasonryLayout extends AbstractLayout implements LayoutEvents.LayoutClickNotifier {
 
-    /**
+	private static final long serialVersionUID = -4228940186609397119L;
+
+	/**
      * Wrapper style name for components added. Will tell wrapper to take double width.
      */
     public static final String DOUBLE_WIDE_STYLENAME = "masonry-double-wide";
@@ -68,7 +71,9 @@ public class MasonryLayout extends AbstractLayout implements LayoutEvents.Layout
 
     private final MasonryLayoutServerRpc serverRpc = new MasonryLayoutServerRpc() {
 
-        @Override
+		private static final long serialVersionUID = -4846626807621538906L;
+
+		@Override
         public void layoutClick(MouseEventDetails mouseDetails, Connector clickedConnector) {
             fireEvent(LayoutEvents.LayoutClickEvent.createEvent(MasonryLayout.this,
                     mouseDetails, clickedConnector));
@@ -323,27 +328,20 @@ public class MasonryLayout extends AbstractLayout implements LayoutEvents.Layout
         getState().columnWidth = columnWidth;
     }
 
-    @Override
-    public void addLayoutClickListener(LayoutEvents.LayoutClickListener listener) {
-        addListener(EventId.LAYOUT_CLICK_EVENT_IDENTIFIER,
+    public Registration addLayoutClickListener(LayoutEvents.LayoutClickListener listener) {
+    	return super.addListener(EventId.LAYOUT_CLICK_EVENT_IDENTIFIER,
                 LayoutEvents.LayoutClickEvent.class, listener,
                 LayoutEvents.LayoutClickListener.clickMethod);
     }
 
-    @Override
     public void addListener(LayoutEvents.LayoutClickListener layoutClickListener) {
-        addLayoutClickListener(layoutClickListener);
+    	addLayoutClickListener(layoutClickListener);
     }
 
     @Override
     public void removeLayoutClickListener(LayoutEvents.LayoutClickListener listener) {
-        removeListener(EventId.LAYOUT_CLICK_EVENT_IDENTIFIER,
+        super.removeListener(EventId.LAYOUT_CLICK_EVENT_IDENTIFIER,
                 LayoutEvents.LayoutClickEvent.class, listener);
-    }
-
-    @Override
-    public void removeListener(LayoutEvents.LayoutClickListener layoutClickListener) {
-        removeLayoutClickListener(layoutClickListener);
     }
 
     /**
